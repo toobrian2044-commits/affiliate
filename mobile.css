@@ -1,0 +1,46 @@
+@media (max-width: 480px) {
+  .auth-screen {
+    padding: calc(20px + env(safe-area-inset-top)) 15px calc(28px + env(safe-area-inset-bottom));
+  }
+
+  .auth-layout { margin-top: 6vh; }
+  .auth-intro h1 { font-size: 36px; line-height: 1.06; }
+  .auth-intro > p:not(.eyebrow) { font-size: 12px; line-height: 1.6; }
+  .auth-proof { align-items: flex-start; margin-top: 20px; }
+  .auth-proof small { line-height: 1.4; }
+  .auth-card { padding: 16px; border-radius: 8px; }
+  .auth-tabs { margin-bottom: 22px; }
+  .auth-tab { min-height: 42px; }
+  .auth-form input { min-height: 44px; font-size: 16px; }
+  .auth-submit { min-height: 46px; align-items: center; }
+
+  .topbar { padding-left: 14px; padding-right: 14px; }
+  .page-wrap { padding-left: 12px; padding-right: 12px; }
+  .page-heading h1 { font-size: 27px; }
+  .heading-copy { font-size: 12px; }
+  .metric-card { min-height: 126px; padding: 14px 12px; }
+  .metric-card > strong { font-size: 19px; margin-top: 14px; }
+  .metric-foot { display: block; font-size: 9px; line-height: 1.4; }
+  .dashboard-grid, .bottom-grid { gap: 8px; margin-top: 8px; }
+  .panel { padding: 18px 15px; }
+  .panel h2 { font-size: 16px; }
+  .share-button, .filter-button { min-height: 38px; }
+  .link-field { padding-left: 9px; }
+  .link-field button { min-height: 38px; padding: 10px 9px; }
+  .activity-item { gap: 7px; }
+  .activity-item p { max-width: 150px; }
+  .wallet-hero { padding: 20px 17px; }
+  .wallet-hero > div:first-child strong { font-size: 29px; }
+  .wallet-breakdown { gap: 8px; }
+  .wallet-breakdown span { font-size: 9px; }
+  .wallet-breakdown strong { font-size: 11px; }
+  .table-toolbar { padding: 12px; flex-wrap: wrap; }
+  .search-field { width: 100%; min-height: 40px; }
+  .stats-strip div { padding: 15px 13px; }
+  .stats-strip strong { font-size: 19px; }
+  .site-footer { padding-left: 12px; padding-right: 12px; }
+  .site-footer span:last-child { gap: 10px; }
+  .notification-popover { left: 12px; right: 12px; width: auto; }
+  .form-panel input { min-height: 44px; font-size: 16px; }
+  .requirements-panel { padding: 18px 15px; }
+}
