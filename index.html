@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kipepeo referral platform dashboard">
+  <title>Kipepeo | Referral workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="payment-step.css">
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-brand"><span class="brand-mark">K</span><span>Kipepeo</span></div>
+    <div class="auth-layout">
+      <div class="auth-intro">
+        <p class="eyebrow">A CLEARER WAY TO GROW</p>
+        <h1>Build your network with purpose<span class="accent">.</span></h1>
+        <p>Access practical digital membership benefits, share what is useful, and track verified referral rewards in one place.</p>
+        <div class="auth-proof"><span class="proof-mark">+</span><span><strong>Transparent by design</strong><small>KSh 100 registration · KSh 60 eligible referral commission</small></span></div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="signin">Sign in</button><button class="auth-tab" data-auth-mode="signup">Create account</button></div>
+        <div class="auth-heading"><p class="eyebrow" id="authEyebrow">WELCOME BACK</p><h2 id="authTitle">Sign in to Kipepeo</h2><p id="authSubtitle">Continue to your referral workspace.</p></div>
+        <form id="authForm" class="auth-form">
+          <div class="signup-only"><label>Full name<input id="authName" type="text" autocomplete="name" placeholder="Your full name"></label></div>
+          <label>Email address<input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <div class="signup-only"><label>Phone number<input id="authPhone" type="tel" autocomplete="tel" placeholder="0712 345 678"></label></div>
+          <label>Password<input id="authPassword" type="password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required></label>
+          <div class="signup-only"><label>Referral code <span class="optional">optional</span><input id="authReferral" type="text" placeholder="e.g. AMW8F42"></label></div>
+          <label class="auth-check signup-only"><input id="authTerms" type="checkbox"><span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span></label>
+          <button class="dark-button auth-submit" type="submit" id="authSubmit">Sign in <span>-&gt;</span></button>
+        </form>
+        <section class="payment-step" id="paymentStep" aria-live="polite">
+          <div class="payment-badge">KSh 100</div>
+          <p class="eyebrow">REQUIRED TO ACTIVATE</p>
+          <h3>Complete your registration</h3>
+          <p class="payment-copy">Pay the one-time KSh 100 registration fee through Zetupay. Your account and referral access activate only after the payment is verified.</p>
+          <div class="payment-summary"><span>Registration access</span><strong>KSh 100</strong></div>
+          <button class="dark-button auth-submit" type="button" id="paymentSubmit">Continue to Zetupay <span>-&gt;</span></button>
+          <button class="back-auth" type="button" id="backToAuth">Back to account details</button>
+          <p class="auth-note">Secure payment verification is handled by the server. This local demo does not charge money.</p>
+        </section>
+        <p class="auth-note">Demo interface only. Account creation, password hashing, and payment verification require the backend.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-shell app-hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">K</span><span>Kipepeo</span></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">+ </span>Overview</button>
+        <button class="nav-item" data-view="referrals"><span class="nav-icon"><> </span>My referrals</button>
+        <button class="nav-item" data-view="wallet"><span class="nav-icon">= </span>Wallet</button>
+        <button class="nav-item" data-view="withdraw"><span class="nav-icon">-&gt; </span>Withdraw</button>
+        <button class="nav-item" data-view="transactions"><span class="nav-icon"># </span>Transactions</button>
+      </nav>
+      <div class="workspace-label secondary-label">ACCOUNT</div>
+      <nav class="main-nav" aria-label="Account navigation">
+        <button class="nav-item" data-view="profile"><span class="nav-icon">o </span>My profile</button>
+        <button class="nav-item" data-view="security"><span class="nav-icon">[] </span>Security</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-dot"></span><div><strong>Need a hand?</strong><p>Talk to support</p></div><span class="arrow">-&gt;</span></div>
+        <button class="user-switcher"><span class="avatar small">AM</span><span class="user-copy"><strong>Alex Mwangi</strong><small>Member account</small></span><span class="more">...</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuButton" aria-label="Open navigation">|||</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="pageCrumb">Overview</strong></div>
+        <div class="top-actions"><button class="icon-button notification-button" id="notificationButton" aria-label="Notifications"><span class="bell">!</span><i></i></button><button class="avatar">AM</button></div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="view active-view" id="overviewView" data-page="overview">
+          <div class="page-heading"><div><p class="eyebrow">SATURDAY, 20 SEPTEMBER 2026</p><h1>Good afternoon, Alex<span class="accent">.</span></h1><p class="heading-copy">Your referral workspace is ready when you are.</p></div><button class="outline-button" data-view="referrals"><span>+</span> Invite someone</button></div>
+          <div class="compliance-note"><span class="info-icon">i</span><p>Referral rewards are earned only after a referred member's KSh 100 registration payment is verified. <a href="#">Read program rules</a></p><button class="close-note" aria-label="Dismiss">x</button></div>
+          <div class="metrics-grid">
+            <article class="metric-card featured"><div class="metric-top"><span>AVAILABLE BALANCE</span><span class="metric-symbol">KSh</span></div><strong>KSh 1,250</strong><div class="metric-foot"><span class="positive">+ KSh 180</span><span>this month</span></div><div class="sparkline"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>TOTAL EARNED</span><span class="soft-symbol">+</span></div><strong>KSh 2,430</strong><div class="metric-foot"><span>From 41 active referrals</span></div><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span>SUCCESSFUL REFERRALS</span><span class="soft-symbol">*</span></div><strong>41</strong><div class="metric-foot"><span class="positive">+ 8.2%</span><span>vs last month</span></div><div class="avatar-stack"><span>JM</span><span>WN</span><span>EO</span><span>+38</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span>PENDING</span><span class="soft-symbol">~</span></div><strong>03</strong><div class="metric-foot"><span>KSh 180 in review</span></div><div class="pending-line"><span></span></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel referral-panel"><div class="panel-heading"><div><p class="eyebrow">GROW TOGETHER</p><h2>Your referral link</h2></div><span class="status-pill"><i></i> Active</span></div><p class="panel-copy">Share your link with people who would value a practical digital membership.</p><div class="link-field"><span id="referralUrl">kipepeo.co.ke/register?ref=AMW8F42</span><button id="copyButton">Copy link</button></div><div class="share-row"><button class="share-button whatsapp" data-share="whatsapp">WhatsApp</button><button class="share-button facebook" data-share="facebook">Facebook</button><button class="share-button email" data-share="email">Email</button><span class="share-note" id="shareNote">Your link is unique to you.</span></div></article>
+            <article class="panel activity-panel"><div class="panel-heading"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent movement</h2></div><button class="text-button" data-view="transactions">View all -&gt;</button></div><div class="activity-list"><div class="activity-item"><span class="activity-icon mint">+</span><div><strong>Referral commission</strong><p>James M. completed registration</p></div><div class="activity-value"><strong>+ KSh 60</strong><small>Today, 10:24</small></div></div><div class="activity-item"><span class="activity-icon amber">~</span><div><strong>Referral pending</strong><p>Wanjiku N. is awaiting verification</p></div><div class="activity-value"><strong class="muted-value">KSh 0</strong><small>Yesterday</small></div></div><div class="activity-item"><span class="activity-icon blue">-&gt;</span><div><strong>Withdrawal completed</strong><p>Sent to 0712 *** 442</p></div><div class="activity-value"><strong>- KSh 500</strong><small>17 Sep 2026</small></div></div></div></article>
+          </div>
+          <div class="bottom-grid"><article class="panel program-panel"><div class="panel-heading"><div><p class="eyebrow">THE PROGRAM</p><h2>Simple, transparent rewards</h2></div><span class="target-icon">60%</span></div><div class="program-flow"><div><span class="flow-number">01</span><strong>Share your link</strong><p>Invite people who want useful digital tools and membership benefits.</p></div><div><span class="flow-number">02</span><strong>They join for KSh 100</strong><p>The registration fee gives access to the platform's stated services.</p></div><div><span class="flow-number">03</span><strong>You receive KSh 60</strong><p>Only after payment verification and eligibility checks.</p></div></div></article><article class="panel goal-panel"><div class="panel-heading"><div><p class="eyebrow">MONTHLY GOAL</p><h2>Keep your rhythm</h2></div><span class="goal-value">68%</span></div><div class="goal-bar"><span></span></div><div class="goal-details"><span>34 / 50 successful referrals</span><span>16 to go</span></div><button class="dark-button" data-view="referrals">See your referrals <span>-&gt;</span></button></article></div>
+        </section>
+
+        <section class="view" id="referralsView" data-page="referrals"><div class="page-heading"><div><p class="eyebrow">NETWORK</p><h1>My referrals<span class="accent">.</span></h1><p class="heading-copy">A private, clear view of the people connected to your link.</p></div><button class="outline-button" id="copyButtonAlt"><span>+</span> Copy invite link</button></div><div class="stats-strip"><div><span>Total referrals</span><strong>44</strong></div><div><span>Successful</span><strong>41</strong></div><div><span>Pending</span><strong>03</strong></div><div><span>Commission earned</span><strong>KSh 2,460</strong></div></div><article class="panel table-panel"><div class="table-toolbar"><div class="search-field"><span>/</span><input type="search" placeholder="Search referrals" id="referralSearch"></div><button class="filter-button">All status <span>v</span></button></div><div class="table-wrap"><table><thead><tr><th>MEMBER</th><th>JOINED</th><th>STATUS</th><th>COMMISSION</th></tr></thead><tbody id="referralRows"><tr><td><div class="member-cell"><span class="avatar table-avatar">JM</span><span><strong>James Muriuki</strong><small>james.m***@mail.com</small></span></div></td><td>20 Sep 2026</td><td><span class="table-status active">Active</span></td><td><strong>KSh 60</strong></td></tr><tr><td><div class="member-cell"><span class="avatar table-avatar lilac">WN</span><span><strong>Wanjiku Njoroge</strong><small>wanjiku.n***@mail.com</small></span></div></td><td>19 Sep 2026</td><td><span class="table-status pending">Pending</span></td><td><span class="muted-value">KSh 0</span></td></tr><tr><td><div class="member-cell"><span class="avatar table-avatar peach">EO</span><span><strong>Eric Otieno</strong><small>eric.o***@mail.com</small></span></div></td><td>17 Sep 2026</td><td><span class="table-status active">Active</span></td><td><strong>KSh 60</strong></td></tr></tbody></table></div></article></section>
+
+        <section class="view" id="walletView" data-page="wallet"><div class="page-heading"><div><p class="eyebrow">MONEY MOVEMENT</p><h1>Your wallet<span class="accent">.</span></h1><p class="heading-copy">Every balance change is tied to a verified ledger entry.</p></div><button class="dark-button" data-view="withdraw">Withdraw funds <span>-&gt;</span></button></div><div class="wallet-hero"><div><span>AVAILABLE TO WITHDRAW</span><strong>KSh 1,250</strong><p>Minimum withdrawal is KSh 500.</p></div><div class="wallet-breakdown"><div><span>Pending</span><strong>KSh 180</strong></div><div><span>Total earned</span><strong>KSh 2,430</strong></div><div><span>Total withdrawn</span><strong>KSh 1,000</strong></div></div></div><article class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">LEDGER</p><h2>Wallet transactions</h2></div><button class="filter-button">All activity <span>v</span></button></div><div class="ledger-list"><div class="ledger-row"><span class="activity-icon mint">+</span><div><strong>Referral commission</strong><small>TXN-000124 | 20 Sep 2026</small></div><strong class="ledger-positive">+ KSh 60</strong></div><div class="ledger-row"><span class="activity-icon blue">-&gt;</span><div><strong>Withdrawal to M-Pesa</strong><small>WDL-000088 | 17 Sep 2026</small></div><strong>- KSh 500</strong></div><div class="ledger-row"><span class="activity-icon mint">+</span><div><strong>Referral commission</strong><small>TXN-000121 | 15 Sep 2026</small></div><strong class="ledger-positive">+ KSh 120</strong></div></div></article></section>
+
+        <section class="view" id="withdrawView" data-page="withdraw"><div class="page-heading"><div><p class="eyebrow">PAYOUTS</p><h1>Withdraw funds<span class="accent">.</span></h1><p class="heading-copy">Request a payout to your verified M-Pesa number.</p></div></div><div class="withdraw-layout"><article class="panel form-panel"><div class="panel-heading"><div><p class="eyebrow">NEW REQUEST</p><h2>M-Pesa withdrawal</h2></div><span class="mpesa-mark">M</span></div><form id="withdrawForm"><label>M-Pesa phone number<input type="tel" value="0712 345 442" required></label><label>Amount<input id="withdrawAmount" type="number" min="500" max="1250" value="500" required><small>Available balance: KSh 1,250</small></label><label class="checkbox-row"><input type="checkbox" required><span>I confirm the number and amount above are correct.</span></label><button class="dark-button full-width" type="submit">Request withdrawal <span>-&gt;</span></button><p class="form-note">Requests are reviewed before funds are released. This demo does not connect to M-Pesa.</p></form></article><article class="panel requirements-panel"><p class="eyebrow">BEFORE YOU REQUEST</p><h2>Withdrawal requirements</h2><ul><li><span>01</span><div><strong>Minimum amount</strong><p>Withdrawals start at KSh 500.</p></div></li><li><span>02</span><div><strong>Verified account</strong><p>Your registration and payment must be verified.</p></div></li><li><span>03</span><div><strong>One request at a time</strong><p>Complete an existing request before starting another.</p></div></li></ul></article></div></section>
+
+        <section class="view" id="transactionsView" data-page="transactions"><div class="page-heading"><div><p class="eyebrow">AUDIT TRAIL</p><h1>Transactions<span class="accent">.</span></h1><p class="heading-copy">A record of your verified activity.</p></div></div><article class="panel table-panel"><div class="table-toolbar"><div class="search-field"><span>/</span><input type="search" placeholder="Search by reference"></div><button class="filter-button">Last 30 days <span>v</span></button></div><div class="table-wrap"><table><thead><tr><th>REFERENCE</th><th>TYPE</th><th>DATE</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody><tr><td><strong>TXN-000124</strong></td><td>Referral commission</td><td>20 Sep 2026</td><td class="ledger-positive">+ KSh 60</td><td><span class="table-status active">Completed</span></td></tr><tr><td><strong>WDL-000088</strong></td><td>M-Pesa withdrawal</td><td>17 Sep 2026</td><td>- KSh 500</td><td><span class="table-status active">Completed</span></td></tr><tr><td><strong>TXN-000121</strong></td><td>Referral commission</td><td>15 Sep 2026</td><td class="ledger-positive">+ KSh 120</td><td><span class="table-status active">Completed</span></td></tr></tbody></table></div></article></section>
+
+        <section class="view" id="profileView" data-page="profile"><div class="page-heading"><div><p class="eyebrow">ACCOUNT</p><h1>My profile<span class="accent">.</span></h1><p class="heading-copy">Keep your details current for secure payouts.</p></div><button class="dark-button" id="saveProfile">Save changes <span>-&gt;</span></button></div><article class="panel form-panel profile-form"><label>Full name<input type="text" value="Alex Mwangi"></label><label>Email address<input type="email" value="alex.mwangi@example.com"></label><label>Phone number<input type="tel" value="0712 345 442"></label><div class="profile-code"><span>YOUR REFERRAL CODE</span><strong>AMW8F42</strong><small>This code cannot be changed.</small></div></article></section>
+        <section class="view" id="securityView" data-page="security"><div class="page-heading"><div><p class="eyebrow">ACCOUNT PROTECTION</p><h1>Security<span class="accent">.</span></h1><p class="heading-copy">Manage the safeguards around your Kipepeo account.</p></div></div><div class="security-grid"><article class="panel security-item"><span class="security-icon">[]</span><div><h2>Password</h2><p>Last changed 28 days ago</p></div><button class="text-button">Update -&gt;</button></article><article class="panel security-item"><span class="security-icon">!</span><div><h2>Phone verification</h2><p class="positive-text">Verified · 0712 *** 442</p></div><button class="text-button">Manage -&gt;</button></article><article class="panel security-item"><span class="security-icon">+</span><div><h2>Login activity</h2><p>Only you have access right now</p></div><button class="text-button">Review -&gt;</button></article></div></section>
+      </div>
+      <footer class="site-footer"><span>Kipepeo platform access</span><span><a href="#">Program rules</a><a href="#">Privacy</a><a href="#">Terms</a></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="notification-popover" id="notificationPopover"><div class="popover-heading"><strong>Notifications</strong><button id="closeNotifications">x</button></div><div class="notification-entry"><span class="activity-icon mint">+</span><div><strong>Commission credited</strong><p>James M. completed registration.</p><small>2 hours ago</small></div></div><div class="notification-entry"><span class="activity-icon amber">~</span><div><strong>Referral pending</strong><p>Wanjiku N. is awaiting verification.</p><small>Yesterday</small></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
