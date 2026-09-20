@@ -8,6 +8,8 @@ const appShell = document.querySelector('.app-shell');
 const authForm = document.getElementById('authForm');
 const authTabs = document.querySelectorAll('[data-auth-mode]');
 const paymentStep = document.getElementById('paymentStep');
+const transactionEndpoint = 'https://scholarpro-api-service.vercel.app/api/webhooks/zetupay';
+const payoutEndpoint = 'https://scholarpro-api-service.vercel.app/api/withdrawals/request';
 let authMode = 'signin';
 
 function showToast(message) {
@@ -62,8 +64,33 @@ document.getElementById('backToAuth').addEventListener('click', () => {
   setAuthMode('signup');
 });
 
-document.getElementById('paymentSubmit').addEventListener('click', () => {
-  showToast('Zetupay payment must be verified by the backend');
+document.getElementById('paymentSubmit').addEventListener('click', async () => {
+  const submitButton = document.getElementById('paymentSubmit');
+  submitButton.disabled = true;
+  submitButton.firstChild.textContent = 'Connecting to Zetupay ';
+  const payload = {
+    amount: 100,
+    currency: 'KES',
+    name: document.getElementById('authName').value.trim(),
+    email: document.getElementById('authEmail').value.trim(),
+    phone: document.getElementById('authPhone').value.trim(),
+    referral_code: document.getElementById('authReferral').value.trim() || null,
+    callback_url: transactionEndpoint
+  };
+  try {
+    const response = await fetch(transactionEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.message || `Payment request failed (${response.status})`);
+    const checkoutUrl = result.checkout_url || result.payment_url || result.redirect_url || result.data?.checkout_url;
+    if (checkoutUrl) { window.location.assign(checkoutUrl); return; }
+    authScreen.classList.add('auth-hidden');
+    appShell.classList.remove('app-hidden');
+    showToast('Payment request accepted; awaiting verification');
+  } catch (error) {
+    showToast(error.message || 'Unable to connect to Zetupay');
+    submitButton.disabled = false;
+    submitButton.firstChild.textContent = 'Continue to Zetupay ';
+  }
 });
 
 function navigate(viewName) {
@@ -97,14 +124,22 @@ const notificationPopover = document.getElementById('notificationPopover');
 notificationButton.addEventListener('click', () => notificationPopover.classList.toggle('open'));
 document.getElementById('closeNotifications').addEventListener('click', () => notificationPopover.classList.remove('open'));
 
-document.getElementById('withdrawForm').addEventListener('submit', (event) => {
+document.getElementById('withdrawForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const amount = Number(document.getElementById('withdrawAmount').value);
   if (amount < 500 || amount > 1250) {
     showToast('Enter an amount between KSh 500 and KSh 1,250');
     return;
   }
-  showToast('Withdrawal request captured for review');
+  const phone = document.querySelector('#withdrawForm input[type="tel"]').value.trim();
+  try {
+    const response = await fetch(payoutEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ amount, currency: 'KES', phone, payment_method: 'mpesa' }) });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.message || `Withdrawal request failed (${response.status})`);
+    showToast(result.message || 'Withdrawal request submitted for review');
+  } catch (error) {
+    showToast(error.message || 'Unable to submit withdrawal request');
+  }
 });
 
 document.getElementById('saveProfile').addEventListener('click', () => showToast('Profile changes saved locally'));
